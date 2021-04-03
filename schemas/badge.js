@@ -4,7 +4,7 @@ title: "Badges",
 type: "document",
 fields: [
         {
-                        name: "title",
+            name: "title",
             title: "Title",
             type: "string",
         },
@@ -13,12 +13,12 @@ fields: [
             title: "Description",
             type: "array", 
             of: [
-            { type: 'block' }, 
+                { type: 'block' }, 
             ]
         },
         {
             name: 'badgeImage',
-                        title: 'Badge Image',
+            title: 'Badge Image',
             type: 'image'
         },
         {
@@ -31,5 +31,8 @@ fields: [
                 maxLength: 96
             }
         },
-    ]
+    ],
+    preview: {
+        select: {title: 'name', media: 'image'}
+    }
 }
