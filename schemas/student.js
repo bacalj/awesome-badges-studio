@@ -17,9 +17,6 @@ export default {
             name: 'avatar',
             title: 'Avatar',
             type: 'image'
-        },
-    ],
-    preview: {
-        select: {title: 'name', media: 'image'}
-    }
+        }
+    ]
 }

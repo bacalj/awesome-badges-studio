@@ -1,8 +1,8 @@
 export default {
     name: "badge",
-title: "Badges",
-type: "document",
-fields: [
+    title: "Badges",
+    type: "document",
+    fields: [
         {
             name: "title",
             title: "Title",
@@ -25,14 +25,24 @@ fields: [
             name: "slug",
             title: "Slug",
             type: "slug",
-            hidden: true,
             options: {
-                source: 'name',
+                source: 'title',
                 maxLength: 96
             }
         },
-    ],
-    preview: {
-        select: {title: 'name', media: 'image'}
-    }
+        {
+            title: 'Students',
+            name: 'student',
+            type: 'array',
+            of: [
+                {
+                    type: 'reference',
+                    to: [
+                        {type: 'student'}
+                    ]
+                }
+            ],
+            validation: Rule => Rule.unique()
+        }
+    ]
 }

@@ -1,9 +1,29 @@
-# Sanity Clean Content Studio
+# Awesome Badge Studio
 
-Congratulations, you have now installed the Sanity Content Studio, an open source real-time content editing environment connected to the Sanity backend.
+Here are some queries that work
 
-Now you can do the following things:
+```js
 
-- [Read “getting started” in the docs](https://www.sanity.io/docs/introduction/getting-started?utm_source=readme)
-- [Join the community Slack](https://slack.sanity.io/?utm_source=readme)
-- [Extend and build plugins](https://www.sanity.io/docs/content-studio/extending?utm_source=readme)
+// published badges with students that earned it
+*[_type == "badge" && !(_id in path('drafts.**'))]{
+  _id, title, 
+  student[]->{_id, name, avatar}
+}
+
+// published students with their badges
+*[_type == "student" && !(_id in path('drafts.**'))]{
+  _id, name, 
+  "badges": *[_type == "badge" && references(^._id)]{
+  	    _id, title, badgeImage
+    }
+}
+
+// student by name and their badges
+*[_type == "student" && gSuiteName == "foo@campusschool.net"]{
+  _id, name, avatar,
+  "badges": *[_type == "badge" && references(^._id)]{
+  	_id, title, badgeImage
+	}
+}
+
+```
