@@ -4,19 +4,18 @@ export default {
     type: "document",
     fields: [
         {
-            name: "gSuiteName",
-            title: "GSuite Username",
-            type: "string",
-        },
-        {
             name: "name",
-            title: "Name",
+            title: "Student Name",
             type: "string",
         },
         {
-            name: 'avatar',
-            title: 'Avatar',
-            type: 'image'
+            title: 'Badges Earned',
+            name: 'badges',
+            type: 'array',
+            of: [{
+                type: 'reference',
+                to: [{type: 'badge'}]
+            }],
         }
     ]
 }
